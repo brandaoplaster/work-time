@@ -43,7 +43,22 @@ docker-compose up
 ```
 127.0.0.1:3000
 ```
+### OBS :
+>Ruby on rails instalado na maquina
 
+```
+bundle install
+```
+```
+rails db:create
+rails db:migrate
+```
+```
+rails s
+```
+```
+127.0.0.1:3000
+```
 
 ## Built With
 
