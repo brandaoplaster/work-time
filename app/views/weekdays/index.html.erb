@@ -10,7 +10,7 @@
 					<script>
 						<% flash.each do |f| %>
 						<% type=f[0].to_s.gsub('alert', 'red').gsub('warning', 'orange').gsub('success', 'green') %>
-						Materialize.toast('<%= f[1] %>', 4000, '<%= type %>')
+							Materialize.toast('<%= f[1] %>', 4000, '<%= type %>')
 						<% end %>
 					</script>
 				<% end %>
@@ -19,12 +19,12 @@
 				
 						<div class="datetime input-field col s12 l6">
 						<%= form.label :current_day %>
-						<%= form.date_select :current_day,  class: "datepicker", readonly: false %>
+						<%= form.date_select :current_day,  class: "datepicker", disabled: true %>
 						</div>
 
 						<div class="datetime input-field col s12 l6">
 						<%= form.label :time_stamp %>
-						<%= form.time_select :time_stamp, class: "datepicker", readonly: true %>
+						<%= form.time_select :time_stamp, class: "datepicker", disabled: true  %>
 						</div>
 
 						<div class="actions">
@@ -56,7 +56,9 @@
 								<%= record_time.time_stamp.strftime("%H:%M") %>
 								</td>
 							<% end %>
-							<td><%= link_to 'Destroy', weekday, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+							<td>
+								<%= link_to 'Deletar', weekday, method: :delete, class: 'btn lighten-2 red waves-light', data: { confirm: 'Você tem certeza?' } %>
+							</td>
 							</tr>
 						<% end %>
 						</tbody>
@@ -101,7 +103,7 @@
 									</td>
 								<% end %>
 								<td>
-									<%= link_to 'Destroy', weekday, method: :delete, data: { confirm: 'Are you sure?' } %>
+									<%= link_to 'Deletar', weekday, method: :delete, class: 'btn lighten-2 red waves-light', data: { confirm: 'Are you sure?' } %>
 								</td>
 							</tr>
 						<% end %>

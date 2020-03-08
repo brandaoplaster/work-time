@@ -53,7 +53,7 @@ class WeekdaysController < ApplicationController
   def destroy
     @weekday.destroy
     respond_to do |format|
-      format.html { redirect_to weekdays_url, notice: 'Weekday was successfully destroyed.' }
+      format.html { redirect_to weekdays_url, notice: 'Registro deleteado com sucesso.' }
       format.json { head :no_content }
     end
   end
@@ -71,7 +71,7 @@ class WeekdaysController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { redirect_to weekdays_url, :flash => {:alert => 'Ops... Você já relaizo 4 registros de horas hoje.'} }
+        format.html { redirect_to weekdays_url, :flash => {:alert => 'Ops... Você ja registro 2 saidas e 2 entradas'} }
         format.json { head :no_content }
       end
     end

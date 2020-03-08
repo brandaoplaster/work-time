@@ -1,5 +1,6 @@
 @import "materialize";
 @import "material_icons";
+@import "pages.scss";
 
 body {
   display: flex;
@@ -38,4 +39,8 @@ nav{
 
 .tabs .indicator {
   background-color: #fff;
+}
+
+.padding-top {
+  padding-top: 111px;
 }
