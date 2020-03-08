@@ -1,0 +1,115 @@
+<div class="container pt-10">
+    <div class="row card">
+        <div id="test1" class="col s12">
+            <h3 class='header'>
+				Marca hora
+			</h3>
+
+            <div class="row">
+				<% unless flash.empty? %>
+					<script>
+						<% flash.each do |f| %>
+						<% type=f[0].to_s.gsub('alert', 'red').gsub('warning', 'orange').gsub('success', 'green') %>
+						Materialize.toast('<%= f[1] %>', 4000, '<%= type %>')
+						<% end %>
+					</script>
+				<% end %>
+				<div class="col s12">
+					<%= form_with(url: add_time_weekdays_path, local: true) do |form| %>
+				
+						<div class="datetime input-field col s12 l6">
+						<%= form.label :current_day %>
+						<%= form.date_select :current_day,  class: "datepicker", readonly: false %>
+						</div>
+
+						<div class="datetime input-field col s12 l6">
+						<%= form.label :time_stamp %>
+						<%= form.time_select :time_stamp, class: "datepicker", readonly: true %>
+						</div>
+
+						<div class="actions">
+						<button type="submit" class="btn waves-effect waves-light">Registar</button>
+						</div>  
+					<% end %>
+				</div>
+            </div>
+
+			<div class="divider"></div>
+
+			<div class="row">
+				<div class="col s12">
+					<table>
+						<thead>
+						<tr>
+							<th>Data Atual</th>
+							<th colspan="3"></th>
+						</tr>
+						</thead>
+
+						<tbody>
+						<% @weekdays.each do |weekday| %>
+							<tr>
+							<td><%= weekday.current_day.strftime("%d/%m/%Y") %></td>
+							
+							<td><% weekday.record_times.each do |record_time| %></td>
+								<td>
+								<%= record_time.time_stamp.strftime("%H:%M") %>
+								</td>
+							<% end %>
+							<td><%= link_to 'Destroy', weekday, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+							</tr>
+						<% end %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+        </div>
+        <div id="test2" class="col s12">
+            <h3 class='header'>
+				Histórico
+			</h3>
+
+			<div class="row">
+				<div class="col s12">
+					<table>
+						<thead>
+						<tr>
+							<th >Data Atual</th>
+							<th >Entrada 1</th>
+							<th >Saida 1</th>
+							<th >Entrada 2</th>
+							<th >Saida 2</th>
+							<th >Ação</th>
+						</tr>
+						</thead>
+
+						<tbody>
+						<% @weekdays_all.each do |weekday| %>
+							<tr>
+								<td>
+									<%= weekday.current_day.strftime("%d/%m/%Y") %>
+								</td>
+								
+								<% weekday.record_times.each do |record_time| %>
+									<td>
+										<% if record_time.time_stamp.blank? %>
+											<%= record_time.time_stamp.present? %>
+										<% else %>
+											<%= record_time.time_stamp.strftime("%H:%M") %>
+										<% end %>
+									</td>
+								<% end %>
+								<td>
+									<%= link_to 'Destroy', weekday, method: :delete, data: { confirm: 'Are you sure?' } %>
+								</td>
+							</tr>
+						<% end %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+        </div>
+    </div>
+</div>

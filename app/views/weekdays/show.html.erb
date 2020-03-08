@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Current day:</strong>
+  <%= @weekday.current_day %>
+</p>
+
+<%= link_to 'Edit', edit_weekday_path(@weekday) %> |
+<%= link_to 'Back', weekdays_path %>

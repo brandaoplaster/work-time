@@ -1,0 +1,27 @@
+<%= form_with(model: weekday, local: true) do |form| %>
+  <% if weekday.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(weekday.errors.count, "error") %> 
+        prohibited this weekday from being saved:
+      </h2>
+
+      <ul>
+      <% weekday.errors.full_messages.each do |message| %>
+        <li>
+          <%= message %>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="datetime">
+    <%= form.label :current_day %>
+    <%= form.date_select :current_day,  class: "datepicker" %>
+  </div>
+
+  <div class="actions">
+    <button type="submit" class="btn waves-effect waves-light">Registar</button>
+  </div>
+<% end %>

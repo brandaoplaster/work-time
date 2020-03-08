@@ -1,0 +1,41 @@
+@import "materialize";
+@import "material_icons";
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.datetime select {
+  display: inline-flex;
+  width: auto;
+}
+
+.input-field label {
+  position: fixed;
+}
+
+
+.navbar-fixed{
+  height:auto !important;
+}
+nav{
+  height:auto;
+}
+.mb-0{
+  margin-bottom:0px;
+}
+
+
+.pt-10{
+  padding-top:10em;
+}
+
+.tabs .indicator {
+  background-color: #fff;
+}
